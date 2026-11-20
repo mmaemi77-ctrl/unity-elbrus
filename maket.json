@@ -1,0 +1,13 @@
+{
+  "page": "index.html",
+  "eyebrow": "UNiTy · главный экран",
+  "title": "Три дома у&nbsp;Эльбруса, <em>бронь без переписки</em>",
+  "chips": ["Свободные даты видно сразу", "Barn house, A-frame, Чегет", "Трансфер к брони"],
+  "bg": "#0F0E0C",
+  "ink": "#F4EFE6",
+  "label": "#F2C987",
+  "accent": "#B98140",
+  "accentText": "#F2C987",
+  "photo": "img/dom-girlyanda.jpg",
+  "logo": "img/logo.png"
+}

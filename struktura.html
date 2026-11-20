@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UNiTy · структура</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&family=Jost:wght@300;400;500;600&display=swap">
+<style>
+/* Слайды структуры 4:5 для директа и WhatsApp: 540×675 CSS, снимаются в 2x = 1080×1350 */
+:root{--bg:#0F0E0C;--bg2:#14120F;--surface:#1B1915;--surface2:#25221C;--surface3:#332E26;--ink:#F4EFE6;--muted:#B5AC9E;--dim:#857D71;--line:#2F2B24;--gold:#E0B06A;--gold-hi:#F2C987;--gold-tint:#2A2216;--busy:#3A342B;--wa:#25D366}
+*{box-sizing:border-box}
+body{margin:0;background:#000;display:grid;gap:20px;justify-content:center;padding:20px;font-family:Onest,system-ui,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0}
+.slide{width:540px;height:675px;position:relative;overflow:hidden;background:var(--bg);isolation:isolate;padding:24px 24px 18px;display:grid;grid-template-rows:auto 1fr auto;gap:14px}
+.slide::before{content:"";position:absolute;inset:0;z-index:-2;background:url(img/dom-girlyanda.jpg) 60% 20%/cover;opacity:.22}
+.slide::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgb(15 14 12 / .55) 0%,var(--bg) 34%)}
+.top{display:grid;gap:8px}
+.br{display:flex;align-items:center;gap:9px;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-hi)}
+.br img{width:30px;height:30px;border-radius:50%;box-shadow:0 0 0 1px rgb(255 255 255 / .2)}
+.br span{margin-left:auto;color:var(--muted)}
+h1{font-family:Jost,sans-serif;font-weight:400;font-size:30px;line-height:1.08;letter-spacing:-.01em}
+h1 em{font-style:normal;color:var(--gold-hi)}
+.top p{font-size:13.5px;color:#D6CEC1;line-height:1.45}
+
+.rows{display:grid;gap:8px;align-content:start}
+.r{display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:9px 9px 9px 14px}
+.v>*{min-width:0}
+.r .t{display:grid;gap:3px}
+.r .no{font-family:Jost,sans-serif;font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--gold)}
+.r h3{font-family:Jost,sans-serif;font-weight:500;font-size:19px;line-height:1.1}
+.r p{font-size:12.5px;line-height:1.38;color:var(--muted)}
+.v{height:84px;grid-template-columns:minmax(0,1fr);border-radius:11px;background:var(--bg2);border:1px solid var(--line);padding:7px;display:grid;gap:4px;align-content:start;overflow:hidden}
+.ln{display:block;height:5px;border-radius:3px;background:#3F392F}
+.ln.w{background:#E9E2D6}
+.ln.g{background:var(--gold)}
+.pl{display:block;height:13px;border-radius:5px;background:var(--surface3)}
+.pl.g{background:var(--gold)}
+.ph{border-radius:6px;background:var(--surface3) center/cover}
+.mini{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:2px}
+.mini i{height:9px;border-radius:2px;background:var(--surface3)}
+.mini i.z{background:var(--busy);opacity:.6}
+.mini i.sel{background:var(--gold)}
+.foot{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--dim);font-weight:600;letter-spacing:.04em}
+.foot b{color:var(--muted);font-weight:700}
+
+/* слайд 3 */
+.wa{background:#0B2E21;border:1px solid #1C5A40;border-radius:16px 16px 16px 4px;padding:12px 14px;font-size:13.5px;line-height:1.5;white-space:pre-line}
+.wa b{display:block;color:#6EE2A0;font-size:12px;margin-bottom:3px}
+.gantt{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px;display:grid;gap:7px}
+.g-row{display:grid;grid-template-columns:78px minmax(0,1fr);gap:8px;align-items:center}
+.g-row>b{font-size:12px;line-height:1.15}
+.g-row>b small{display:block;font-weight:500;color:var(--dim);font-size:10.5px}
+.g-days{display:grid;grid-template-columns:repeat(14,minmax(0,1fr));gap:2px}
+.g-days span{height:22px;border-radius:4px;background:var(--surface3)}
+.g-days span.z{background:linear-gradient(180deg,#8C6A3A,#6E5330)}
+.g-days span.n{background:var(--gold)}
+.g-head .g-days span{height:auto;background:none;font-size:9.5px;color:var(--dim);text-align:center;font-weight:700}
+.lg{display:flex;gap:12px;font-size:11px;color:var(--muted)}
+.lg i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.pts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.pts div{border-top:2px solid var(--gold);padding-top:8px;display:grid;gap:2px}
+.pts b{font-size:13.5px}
+.pts span{font-size:11.5px;color:var(--muted);line-height:1.35}
+</style>
+</head>
+<body>
+
+<!-- 1 -->
+<div class="slide" id="s1">
+  <div class="top">
+    <div class="br"><img src="img/logo.png" alt="">Структура сайта UNiTy<span>1/3</span></div>
+    <h1>Одна страница на&nbsp;<em>три дома</em></h1>
+    <p>Гость сам видит свободные даты и&nbsp;цену, добавляет трансфер и&nbsp;бронирует. Вопросы «свободно&nbsp;ли» и&nbsp;«сколько стоит» больше не&nbsp;идут в&nbsp;три директа.</p>
+  </div>
+  <div class="rows">
+    <div class="r"><div class="t"><span class="no">01</span><h3>Главный экран и&nbsp;бронь</h3><p>Выбор дома, календарь свободных дат, гости и&nbsp;трансфер. Бронь приходит в&nbsp;WhatsApp</p></div>
+      <div class="v" style="grid-template-columns:minmax(0,1fr) 54px;gap:5px">
+        <div style="display:grid;gap:4px;align-content:start"><span class="ln w" style="width:90%;height:7px"></span><span class="ln g" style="width:65%;height:7px"></span><div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px;margin-top:2px"><span class="pl g" style="height:10px"></span><span class="pl" style="height:10px"></span><span class="pl" style="height:10px"></span></div><div class="mini"><i></i><i></i><i class="z"></i><i class="z"></i><i></i><i class="sel"></i><i class="sel"></i><i class="sel"></i><i></i><i class="z"></i><i></i><i></i><i></i><i></i></div><span class="pl g" style="height:10px;width:60%"></span></div>
+        <div class="ph" style="background-image:url(img/dom-sumerki.jpg)"></div>
+      </div></div>
+    <div class="r"><div class="t"><span class="no">02</span><h3>Три дома рядом</h3><p>Barn house, A-frame и&nbsp;Чегет: фото, сколько гостей и&nbsp;спален, минуты до&nbsp;канатки</p></div>
+      <div class="v" style="grid-template-columns:repeat(3,minmax(0,1fr));gap:4px">
+        <div style="display:grid;gap:3px;align-content:start"><div class="ph" style="height:54px;background-image:url(img/dom-girlyanda.jpg)"></div><span class="ln w" style="width:85%"></span><span class="ln" style="width:60%"></span></div>
+        <div style="display:grid;gap:3px;align-content:start"><div class="ph" style="height:54px"></div><span class="ln w" style="width:75%"></span><span class="ln" style="width:55%"></span></div>
+        <div style="display:grid;gap:3px;align-content:start"><div class="ph" style="height:54px"></div><span class="ln w" style="width:80%"></span><span class="ln" style="width:50%"></span></div>
+      </div></div>
+    <div class="r"><div class="t"><span class="no">03</span><h3>Календарь и&nbsp;цены по&nbsp;сезону</h3><p>Праздники, высокий сезон, будни. Сумма за&nbsp;ночи считается сама</p></div>
+      <div class="v">
+        <div class="mini"><i></i><i></i><i></i><i class="z"></i><i class="z"></i><i class="z"></i><i></i><i class="sel"></i><i class="sel"></i><i class="sel"></i><i class="sel"></i><i></i><i class="z"></i><i class="z"></i><i></i><i></i><i></i><i></i><i></i><i class="z"></i><i class="z"></i></div>
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px;margin-top:4px"><div class="pl" style="height:auto;padding:5px;display:grid;gap:3px"><span class="ln" style="width:70%"></span><span class="ln w" style="width:50%"></span></div><div class="pl" style="height:auto;padding:5px;display:grid;gap:3px"><span class="ln" style="width:60%"></span><span class="ln w" style="width:55%"></span></div><div class="pl" style="height:auto;padding:5px;display:grid;gap:3px"><span class="ln" style="width:65%"></span><span class="ln w" style="width:45%"></span></div></div>
+      </div></div>
+    <div class="r"><div class="t"><span class="no">04</span><h3>Трансфер</h3><p>Из&nbsp;Минвод или Нальчика, на&nbsp;сколько человек и&nbsp;сколько стоит. Одной галочкой при брони</p></div>
+      <div class="v" style="align-content:center;gap:6px">
+        <div style="display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:6px"><span class="pl" style="width:30px;height:20px"></span><span style="height:2px;background:repeating-linear-gradient(90deg,var(--gold) 0 5px,transparent 5px 9px)"></span><span class="pl g" style="width:30px;height:20px"></span></div>
+        <div style="display:flex;justify-content:space-between"><span class="ln" style="width:30%"></span><span class="ln" style="width:22%"></span></div>
+        <div style="display:flex;gap:3px;margin-top:4px"><span class="pl g" style="width:34%;height:11px"></span><span class="pl" style="width:30%;height:11px"></span><span class="pl" style="width:30%;height:11px"></span></div>
+      </div></div>
+  </div>
+  <div class="foot"><span>Набросок для&nbsp;<b>UNiTy</b> · Поляна Азау и&nbsp;Чегет</span><span>FOR.MI</span></div>
+</div>
+
+<!-- 2 -->
+<div class="slide" id="s2">
+  <div class="top">
+    <div class="br"><img src="img/logo.png" alt="">Структура сайта UNiTy<span>2/3</span></div>
+    <h1>Что поможет <em>выбрать&nbsp;вас</em></h1>
+    <p>Интерьер, отзывы гостей и&nbsp;понятные условия. Всё, что сейчас спрятано в&nbsp;хайлайтс, на&nbsp;одном экране.</p>
+  </div>
+  <div class="rows">
+    <div class="r"><div class="t"><span class="no">05</span><h3>Внутри и&nbsp;вокруг</h3><p>Скальная стена, мансарда, сосна в&nbsp;гирлянде. BBQ-вечер как опция к&nbsp;брони</p></div>
+      <div class="v" style="grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);grid-template-rows:1fr 1fr;gap:3px;padding:5px">
+        <div class="ph" style="grid-row:span 2;background-image:url(img/gostinaya-skala.jpg)"></div>
+        <div class="ph" style="background-image:url(img/mansarda.jpg)"></div>
+        <div class="ph" style="background-image:url(img/stol-rozy.jpg)"></div>
+      </div></div>
+    <div class="r"><div class="t"><span class="no">06</span><h3>Отзывы гостей</h3><p>Из&nbsp;хайлайтс GUESTS, дословно, с&nbsp;именами и&nbsp;фото</p></div>
+      <div class="v" style="gap:5px">
+        <div style="display:grid;grid-template-columns:16px 1fr;gap:5px;align-items:center"><span style="width:16px;height:16px;border-radius:50%;background:var(--surface3)"></span><span class="ln w" style="width:45%"></span></div>
+        <span class="ln" style="width:95%"></span><span class="ln" style="width:80%"></span>
+        <div style="display:grid;grid-template-columns:16px 1fr;gap:5px;align-items:center;margin-top:5px"><span style="width:16px;height:16px;border-radius:50%;background:var(--surface3)"></span><span class="ln w" style="width:40%"></span></div>
+        <span class="ln" style="width:90%"></span><span class="ln" style="width:65%"></span>
+      </div></div>
+    <div class="r"><div class="t"><span class="no">07</span><h3>Условия и&nbsp;предоплата</h3><p>Заезд и&nbsp;выезд, залог, животные, отмена. Предоплата онлайн, без «скиньте на&nbsp;карту»</p></div>
+      <div class="v" style="gap:5px">
+        <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:3px">
+          <div class="pl" style="height:auto;padding:5px;display:grid;gap:3px"><span class="ln" style="width:55%"></span><span class="ln w" style="width:40%"></span></div>
+          <div class="pl" style="height:auto;padding:5px;display:grid;gap:3px"><span class="ln" style="width:55%"></span><span class="ln w" style="width:40%"></span></div>
+          <div class="pl" style="height:auto;padding:5px;display:grid;gap:3px"><span class="ln" style="width:50%"></span><span class="ln w" style="width:45%"></span></div>
+          <div class="pl" style="height:auto;padding:5px;display:grid;gap:3px"><span class="ln" style="width:60%"></span><span class="ln w" style="width:35%"></span></div>
+        </div>
+        <span class="pl g" style="height:11px;width:70%"></span>
+      </div></div>
+    <div class="r"><div class="t"><span class="no">08</span><h3>Контакты и&nbsp;как добраться</h3><p>WhatsApp, три аккаунта, точки на&nbsp;карте и&nbsp;маршрут от&nbsp;аэропорта</p></div>
+      <div class="v" style="grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:5px">
+        <div style="position:relative;border-radius:7px;background:linear-gradient(90deg,#2A261F 1px,transparent 1px) 0 0/14px 14px,linear-gradient(#2A261F 1px,transparent 1px) 0 0/14px 14px,var(--surface2)">
+          <span style="position:absolute;left:24%;top:24%;width:11px;height:11px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--gold)"></span>
+          <span style="position:absolute;left:60%;top:56%;width:11px;height:11px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--gold)"></span>
+        </div>
+        <div style="display:grid;gap:5px;align-content:center"><span class="pl" style="height:15px;background:var(--wa)"></span><span class="ln w" style="width:85%"></span><span class="ln" style="width:65%"></span><span class="ln" style="width:72%"></span></div>
+      </div></div>
+  </div>
+  <div class="foot"><span>Набросок для&nbsp;<b>UNiTy</b> · Поляна Азау и&nbsp;Чегет</span><span>FOR.MI</span></div>
+</div>
+
+<!-- 3 -->
+<div class="slide" id="s3">
+  <div class="top">
+    <div class="br"><img src="img/logo.png" alt="">Что видите вы<span>3/3</span></div>
+    <h1>Брони трёх домов <em>в&nbsp;одном месте</em></h1>
+    <p>Каждая бронь приходит в&nbsp;WhatsApp готовым сообщением и&nbsp;сразу закрывает даты своего дома. Пример, имена и&nbsp;даты условные.</p>
+  </div>
+  <div class="rows" style="gap:12px">
+    <div class="wa"><b>Бронь с&nbsp;сайта UNiTy</b>• Barn house, Поляна Азау
+• 15–18 февраля, 3&nbsp;ночи
+• Гостей: 6
+• Трансфер: из&nbsp;Минвод, туда и&nbsp;обратно
+• Предоплата внесена
+• Ирина, +7&nbsp;9…</div>
+    <div class="gantt">
+      <div class="g-row g-head"><b></b><div class="g-days" id="gh"></div></div>
+      <div class="g-row"><b>Barn house<small>Азау</small></b><div class="g-days" data-busy="5,6,7,12,13" data-new="8,9,10"></div></div>
+      <div class="g-row"><b>A-frame<small>Азау</small></b><div class="g-days" data-busy="1,2,3,4,5,6,7,13,14" data-new=""></div></div>
+      <div class="g-row"><b>Чегет<small>дом</small></b><div class="g-days" data-busy="6,7,11,12" data-new="1,2"></div></div>
+      <div class="lg"><span><i style="background:var(--gold)"></i>новая бронь</span><span><i style="background:#7D5F36"></i>занято</span><span><i style="background:var(--surface3)"></i>свободно</span></div>
+    </div>
+    <div class="pts">
+      <div><b>Один календарь</b><span>занят A-frame, сразу видно свободный Чегет</span></div>
+      <div><b>Без переписки</b><span>даты, гости и&nbsp;трансфер в&nbsp;одном сообщении</span></div>
+      <div><b>Ссылка в&nbsp;шапке</b><span>одна на&nbsp;все три аккаунта</span></div>
+    </div>
+  </div>
+  <div class="foot"><span>Набросок для&nbsp;<b>UNiTy</b> · Поляна Азау и&nbsp;Чегет</span><span>FOR.MI</span></div>
+</div>
+
+<script>
+const W=["пн","вт","ср","чт","пт","сб","вс"];
+document.getElementById("gh").innerHTML=Array.from({length:14},(_,i)=>`<span>${W[i%7]}</span>`).join("");
+document.querySelectorAll(".g-days[data-busy]").forEach(row=>{
+  const busy=row.dataset.busy.split(",").filter(Boolean).map(Number),nw=row.dataset.new.split(",").filter(Boolean).map(Number);
+  row.innerHTML=Array.from({length:14},(_,i)=>{const d=i+1;return `<span class="${nw.includes(d)?"n":busy.includes(d)?"z":""}"></span>`}).join("");
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Разбор для UNiTy: сильные стороны, где теряются брони, дома в Азау и Терсколе, задачи сайта и вопросы">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Сайт для UNiTy: рынок и конкуренты">
+<meta property="og:description" content="Сильные стороны, где теряются брони, шесть домов в Азау и Терсколе и что должен делать сайт">
+<meta property="og:image" content="https://mmaemi77-ctrl.github.io/unity-elbrus/og-analiz.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0F0E0C">
+<title>UNiTy · разбор</title>
+<link rel="icon" href="img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&family=Jost:wght@300;400;500;600&display=swap">
+<style>
+/* Layout: разбор-документ в одну колонку в цветах UNiTy. Шапка как вечер у дома под сосной в гирлянде; карточки только у отдельных объектов: конкуренты, переписка, идеи */
+:root{
+  --bg:#0F0E0C;--bg2:#14120F;--surface:#1B1915;--surface2:#25221C;--ink:#F4EFE6;--muted:#B0A799;--dim:#80786D;--line:#2F2B24;
+  --gold:#E0B06A;--gold-hi:#F2C987;--gold-tint:#2A2216;--gold-line:#5A4526;--wood:#B98A5A;--ok:#7FBF7A;
+  --wa:#25D366;
+  --font:"Onest",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --display:"Jost","Onest",system-ui,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:16.5px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+.wrap{max-width:900px;margin:0 auto;padding-left:max(clamp(16px,4vw,32px),env(safe-area-inset-left,0px));padding-right:max(clamp(16px,4vw,32px),env(safe-area-inset-right,0px))}
+h1,h2,h3{margin:0;text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold-hi);outline-offset:3px}
+.eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+/* шапка */
+.top{position:relative;overflow:hidden;isolation:isolate;border-bottom:1px solid var(--line)}
+.top::before{content:"";position:absolute;inset:0;z-index:-2;background:url(img/dom-girlyanda.jpg) center 80%/cover}
+.top::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgb(15 14 12 / .96) 0%,rgb(15 14 12 / .86) 48%,rgb(15 14 12 / .45) 100%),linear-gradient(0deg,var(--bg) 0%,transparent 40%)}
+.top .wrap{padding-block:clamp(34px,7vw,72px) clamp(36px,6vw,60px);display:grid;gap:20px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{width:58px;height:58px;border-radius:50%;box-shadow:0 0 0 1px rgb(255 255 255 / .18)}
+.brand b{font-family:var(--display);font-weight:500;font-size:20px;letter-spacing:.06em;line-height:1.15;display:block}
+.brand small{font-size:13px;color:var(--muted)}
+.top h1{font-family:var(--display);font-weight:400;font-size:clamp(32px,5.4vw,56px);line-height:1.06;letter-spacing:-.01em;max-width:15ch}
+.top h1 em{font-style:normal;color:var(--gold-hi)}
+.top p{max-width:56ch;font-size:clamp(17px,1.8vw,19px);color:#D9D1C4}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pills span{display:inline-flex;align-items:center;gap:8px;background:rgb(255 255 255 / .06);border:1px solid rgb(255 255 255 / .12);border-radius:999px;padding:6px 14px;font-weight:600;font-size:14px;backdrop-filter:blur(4px)}
+.pills span::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold-hi);box-shadow:0 0 10px 2px rgb(242 201 135 / .5)}
+
+/* разделы */
+section{padding-block:clamp(34px,5vw,54px);border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:0}
+h2{font-family:var(--display);font-weight:500;font-size:clamp(25px,3.4vw,36px);line-height:1.12;letter-spacing:-.005em;margin:8px 0 20px}
+h3{font-size:17px;font-weight:700;line-height:1.3}
+.lead{color:var(--muted);max-width:62ch;margin:-6px 0 22px}
+.list{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.list li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;align-items:start}
+.list li::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--gold);margin:9px 0 0 9px}
+.list.plus li::before{content:"✓";width:24px;height:24px;border-radius:50%;background:var(--gold-tint);color:var(--gold-hi);font-weight:800;font-size:13px;display:grid;place-items:center;margin:2px 0 0}
+.list b{font-weight:700}
+.list span{color:#E1DACE}
+
+.key{display:grid;counter-reset:k;background:var(--surface);border-radius:22px;border:1px solid var(--line);overflow:hidden}
+.key div{display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;padding:18px 20px;border-bottom:1px solid var(--line)}
+.key div:last-child{border-bottom:0}
+.key div::before{counter-increment:k;content:counter(k);font-family:var(--display);font-weight:400;font-size:30px;line-height:1;color:var(--gold-hi)}
+.key b{font-weight:700}
+@media (max-width:600px){.key div{grid-template-columns:26px minmax(0,1fr);padding:16px}.key div::before{font-size:24px}}
+
+.gal{display:grid;grid-template-columns:1.25fr 1fr 1fr;grid-template-rows:auto auto;gap:10px;margin-top:24px}
+.gal figure{margin:0;position:relative;border-radius:18px;overflow:hidden;background:var(--surface);border:1px solid var(--line)}
+.gal figure:first-child{grid-row:span 2}
+.gal img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/5}
+.gal figure:first-child img{aspect-ratio:auto}
+.gal figcaption{position:absolute;left:8px;right:8px;bottom:8px;font-size:12.5px;line-height:1.35;color:#F4EFE6;background:rgb(15 14 12 / .72);backdrop-filter:blur(6px);border-radius:10px;padding:6px 9px}
+.cap{font-size:13.5px;color:var(--dim);margin-top:10px}
+@media (max-width:640px){.gal{grid-template-columns:1fr 1fr}.gal figure:first-child{grid-column:span 2;grid-row:auto}.gal figure:first-child img{aspect-ratio:4/3.4}}
+
+.quote{margin-top:18px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:14px 16px}
+.quote img{width:64px;height:64px;border-radius:12px;object-fit:cover}
+.quote p{font-size:15px;color:#E1DACE}
+.quote small{display:block;color:var(--dim);font-size:13px;margin-top:4px}
+
+.aud{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (max-width:680px){.aud{grid-template-columns:1fr}}
+.aud>div{display:grid;gap:8px;align-content:start}
+.aud h3{margin-bottom:4px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:16px 16px 16px 4px;padding:10px 14px;font-weight:500;font-size:15px}
+.season{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:2px solid var(--ink);margin-top:26px}
+.season div{padding:14px 14px 0 0;display:grid;gap:4px;align-content:start}
+.season b{font-family:var(--display);font-weight:500;font-size:19px}
+.season span{font-size:14px;color:var(--muted)}
+@media (max-width:600px){.season{grid-template-columns:1fr;gap:10px}}
+
+.comp{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (max-width:680px){.comp{grid-template-columns:1fr}}
+.cc{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:18px 20px;display:grid;gap:8px;align-content:start;min-width:0}
+.cc .where{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.cc a{font-size:14px;font-weight:600;color:var(--gold-hi);text-underline-offset:3px;word-break:break-all}
+.cc p{font-size:15px;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+.tags span{font-size:12.5px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--bg2);border:1px solid var(--line)}
+.small{font-size:13.5px;color:var(--dim);margin-top:14px}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:22px}
+@media (max-width:680px){.two{grid-template-columns:1fr}}
+.box{border-radius:20px;padding:20px;display:grid;gap:12px;align-content:start}
+.box.norm{background:var(--surface);border:1px solid var(--line)}
+.box.gap{background:var(--gold-tint);border:1px solid var(--gold-line)}
+.box h3{font-family:var(--display);font-weight:500;font-size:19px}
+.box ul{margin:0;padding-left:18px;display:grid;gap:6px;font-size:15px}
+
+.tasks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 14px}
+@media (max-width:680px){.tasks{grid-template-columns:1fr}}
+.tasks div{border-top:2px solid var(--gold);padding-top:12px;display:grid;gap:4px}
+.tasks p{font-size:15px;color:var(--muted)}
+
+.ba{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (max-width:680px){.ba{grid-template-columns:1fr}}
+.chat{background:#12110E;border:1px solid var(--line);border-radius:20px;padding:16px;display:grid;gap:8px;align-content:start}
+.chat .lbl{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.acc{font-size:12px;font-weight:700;color:var(--gold);margin-top:6px}
+.acc:first-of-type{margin-top:0}
+.b{max-width:88%;padding:8px 12px;border-radius:14px;font-size:14.5px;line-height:1.45;white-space:pre-line}
+.b.in{justify-self:start;background:var(--surface2);border-bottom-left-radius:4px}
+.b.out{justify-self:end;background:#3A2E1C;border-bottom-right-radius:4px}
+.b.wa{justify-self:stretch;max-width:none;background:#103A2A;border:1px solid #1C5A40;border-bottom-left-radius:4px;display:grid;gap:4px}
+.b.wa b{display:block;font-size:12.5px;color:#6EE2A0}
+.chat .foot{font-size:13px;color:var(--muted);margin-top:6px}
+
+.ideas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:680px){.ideas{grid-template-columns:1fr}}
+.ideas div{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px 18px;display:grid;gap:4px;align-content:start}
+.ideas p{font-size:15px;color:var(--muted)}
+
+.qlist{margin:0;padding-left:24px;display:grid;gap:10px}
+.qlist li{padding-left:4px;color:#E1DACE}
+.qlist li::marker{font-weight:800;color:var(--gold-hi)}
+
+footer{background:#0A0908;border-top:1px solid var(--line)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;padding-block:22px;font-size:13.5px;color:var(--muted)}
+footer b{font-weight:800;letter-spacing:.06em;color:var(--ink)}
+.sign{display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap}
+.rnd{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--surface2);color:var(--ink)}
+.rnd:hover{background:var(--ink);color:var(--bg)}
+.rnd svg{width:16px;height:16px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="wrap">
+    <div class="brand"><img src="img/logo.png" alt="" width="58" height="58"><span><b>UNiTy</b><small>гостевые дома у&nbsp;подножья Эльбруса</small></span></div>
+    <div class="eyebrow">Разбор для UNiTy · 20&nbsp;ноября 2026</div>
+    <h1>Сайт для UNiTy: рынок и&nbsp;<em>конкуренты</em></h1>
+    <p>Посмотрела ваши аккаунты и&nbsp;дома, которые сдают рядом, на&nbsp;Поляне Азау и&nbsp;в&nbsp;Терсколе. Ниже: что у&nbsp;вас уже работает, где теряются брони и&nbsp;что должен делать сайт.</p>
+    <div class="pills"><span>Поляна Азау и&nbsp;Чегет</span><span>Barn house и&nbsp;A-frame</span><span>BBQ и&nbsp;трансфер</span></div>
+  </div>
+</div>
+
+<main class="wrap">
+  <section>
+    <div class="eyebrow">Коротко</div>
+    <h2>Главное в&nbsp;пяти пунктах</h2>
+    <div class="key">
+      <div><p><b>Дом, который запоминают.</b> Barn house под сосной в&nbsp;гирлянде собрал 123&nbsp;лайка и&nbsp;58&nbsp;репостов, а&nbsp;гостиная со&nbsp;скальной стеной&nbsp;116 лайков. У&nbsp;соседей в&nbsp;Азау на&nbsp;фото в&nbsp;основном типовые интерьеры.</p></div>
+      <div><p>Три дома живут в&nbsp;трёх аккаунтах: @unity_azau, @unity_aframeazau и&nbsp;@unity_cheget. Гость, который выбирает, пишет в&nbsp;каждый и&nbsp;спрашивает одно и&nbsp;то&nbsp;же: свободно&nbsp;ли, сколько стоит, есть&nbsp;ли трансфер.</p></div>
+      <div><p>Соседи на&nbsp;Азау и&nbsp;в&nbsp;Терсколе продают через площадки: Островок, Яндекс Путешествия, 101hotels. По&nbsp;запросу «UNiTy Азау» я не&nbsp;нашла ни&nbsp;сайта, ни&nbsp;карточек на&nbsp;площадках.</p></div>
+      <div><p>Одна страница на&nbsp;три дома решает обе задачи. Гость сам видит свободные даты и&nbsp;цену по&nbsp;сезону, добавляет трансфер и&nbsp;вносит предоплату. Вы видите загрузку всех домов в&nbsp;одном календаре.</p></div>
+      <div><p>Сайт делается за&nbsp;7–10 дней, то&nbsp;есть успевает к&nbsp;январским датам и&nbsp;мартовским праздникам. Ссылка встанет в&nbsp;шапку всех трёх аккаунтов.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Ваши сильные стороны</div>
+    <h2>Что у&nbsp;вас уже сильное</h2>
+    <ul class="list plus">
+      <li><span><b>Интерьер с&nbsp;характером.</b> Чёрная скальная стена во&nbsp;всю гостиную, круглый стол на&nbsp;ребристой ножке, трековый свет, мансарда с&nbsp;деревянным потолком и&nbsp;окном на&nbsp;заснеженную сосну. Такие кадры сами просятся на&nbsp;первый экран.</span></li>
+      <li><span><b>До&nbsp;канатки пешком.</b> Про barn house в&nbsp;посте так и&nbsp;написано: «в&nbsp;шаговой доступности 🏂🚡». Для лыжника это главный вопрос, и&nbsp;на&nbsp;сайте ответ будет в&nbsp;первой строке.</span></li>
+      <li><span><b>Большая компания в&nbsp;одном доме.</b> Barn house на&nbsp;7&nbsp;человек: семья с&nbsp;детьми или друзья, которые едут кататься вместе.</span></li>
+      <li><span><b>BBQ и&nbsp;трансфер уже в&nbsp;шапке.</b> Гостю не&nbsp;нужно искать машину из&nbsp;аэропорта отдельно, а&nbsp;вечер после склона есть чем занять.</span></li>
+      <li><span><b>Узнаваемый бренд.</b> Логотип на&nbsp;вывеске, подушках, меню на&nbsp;столе. Белые розы и&nbsp;сервировка к&nbsp;заезду. Так выглядит место, куда возвращаются.</span></li>
+      <li><span><b>3&nbsp;239 подписчиков и&nbsp;живые подписи.</b> Пост про студию с&nbsp;припиской, что кухню переигрывали «ой как много раз» и&nbsp;розетка всё равно оказалась не&nbsp;там, читается тепло и&nbsp;по-человечески.</span></li>
+    </ul>
+    <div class="gal">
+      <figure><img src="img/dom-girlyanda.jpg" alt="Barn house UNiTy ночью, рядом сосна в гирлянде"><figcaption>Barn house под сосной: 123 лайка, 58 репостов</figcaption></figure>
+      <figure><img src="img/gostinaya-skala.jpg" alt="Гостиная со скальной стеной и круглым столом"><figcaption>Гостиная со скальной стеной</figcaption></figure>
+      <figure><img src="img/mansarda.jpg" alt="Мансарда с деревянным потолком и подвесными лампами"><figcaption>Мансарда, вид на сосну</figcaption></figure>
+      <figure><img src="img/dom-sumerki.jpg" alt="Дом UNiTy в сумерках, снег и вывеска"><figcaption>Вывеска и терраса зимой</figcaption></figure>
+      <figure><img src="img/stol-rozy.jpg" alt="Стол с белыми розами и меню UNiTy"><figcaption>Сервировка к заезду</figcaption></figure>
+    </div>
+    <div class="quote"><img src="img/kuhnya.jpg" alt=""><p>«Наша студия 🥰❤️ Ps кухню мы переигрывали ой как много раз 😂 в итоге розетка оказалась ни там где нужно 🤪»<small>Ваш пост в&nbsp;@unity_azau, 23&nbsp;января 2025</small></p></div>
+    <p class="cap">Фото из&nbsp;вашего Instagram @unity_azau и&nbsp;совместных постов с&nbsp;@unity_aframeazau</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">Где теряются брони</div>
+    <h2>Что сейчас мешает</h2>
+    <ul class="list">
+      <li><span>Три аккаунта на&nbsp;три дома. Гость, который сравнивает, листает три профиля и&nbsp;пишет в&nbsp;каждый. Вы отвечаете в&nbsp;трёх директах и&nbsp;в&nbsp;WhatsApp на&nbsp;одни и&nbsp;те&nbsp;же вопросы.</span></li>
+      <li><span>Свободные даты и&nbsp;цены есть только в&nbsp;переписке. Вопрос «свободно на&nbsp;14–17 февраля, нас шестеро?» каждый раз разбирается вручную, а&nbsp;в&nbsp;сезон таких вопросов десятки в&nbsp;день.</span></li>
+      <li><span>Кто ищет «барнхаус Азау» или «A-frame Чегет» в&nbsp;Яндексе, видит карточки соседей на&nbsp;Островке и&nbsp;Яндекс Путешествиях. Ваших домов в&nbsp;этой выдаче я не&nbsp;увидела.</span></li>
+      <li><span>Трансфер указан в&nbsp;шапке, но&nbsp;откуда, на&nbsp;сколько человек и&nbsp;сколько стоит, не&nbsp;написано. Об&nbsp;этом снова спрашивают в&nbsp;личке.</span></li>
+      <li><span>Условия лежат в&nbsp;хайлайтс «ВАЖНО!». Новый гость их обычно не&nbsp;открывает, поэтому про заезд, залог и&nbsp;животных пишут отдельно.</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="eyebrow">Гости</div>
+    <h2>Что спрашивают перед бронью</h2>
+    <p class="lead">Две группы вопросов, и&nbsp;на&nbsp;обе сайт отвечает до&nbsp;того, как гость напишет вам.</p>
+    <div class="aud">
+      <div><h3>Даты и&nbsp;деньги</h3>
+        <div class="q">Свободно на&nbsp;14–17 февраля?</div>
+        <div class="q">Сколько стоит ночь в&nbsp;праздники и&nbsp;в&nbsp;обычные дни?</div>
+        <div class="q">Какая предоплата и&nbsp;что, если поездка сорвётся?</div>
+        <div class="q">Есть трансфер из&nbsp;Минвод? Сколько стоит на&nbsp;шестерых?</div>
+      </div>
+      <div><h3>Дом и&nbsp;место</h3>
+        <div class="q">Сколько человек помещается и&nbsp;сколько спален?</div>
+        <div class="q">Сколько идти до&nbsp;канатки с&nbsp;лыжами?</div>
+        <div class="q">Где сушить ботинки и&nbsp;хранить снаряжение?</div>
+        <div class="q">Можно с&nbsp;собакой? Есть мангал?</div>
+      </div>
+    </div>
+    <div class="season">
+      <div><b>Зима и&nbsp;весна</b><span>катание на&nbsp;Эльбрусе и&nbsp;Чегете, Новый год, январские и&nbsp;мартовские праздники</span></div>
+      <div><b>Лето</b><span>восхождения на&nbsp;Эльбрус, походы, экскурсии по&nbsp;Приэльбрусью</span></div>
+      <div><b>Межсезонье</b><span>тихие недели, длинные выходные, работа из&nbsp;гор</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Рынок</div>
+    <h2>Кто ещё сдаёт дома рядом</h2>
+    <div class="comp">
+      <div class="cc">
+        <span class="where">Поляна Азау · ул. Азау, 42</span>
+        <h3>Legend07</h3>
+        <a href="https://mirturbaz.ru/russia/kabardino-balkariya/legend07_guest_house" target="_blank" rel="noopener">mirturbaz.ru</a>
+        <p>Ближе всех к&nbsp;вам по&nbsp;формату: A-frame на&nbsp;60&nbsp;м² и&nbsp;барнхаус на&nbsp;70&nbsp;м², 4&nbsp;места плюс 2&nbsp;дополнительных. Кофемашина, кухня, парковка, рядом канатные дороги Эльбрус-1 и&nbsp;Рома-1. Цены в&nbsp;карточке не&nbsp;показались.</p>
+        <div class="tags"><span>Барнхаус и&nbsp;A-frame</span><span>Площадь и&nbsp;места</span><span>Бронь через каталог</span></div>
+      </div>
+      <div class="cc">
+        <span class="where">Поляна Азау · ул. Азау, участок 5</span>
+        <h3>Adara Elbrus</h3>
+        <a href="https://travel.yandex.ru/hotels/the-kabardino-balkar-republic/shale-adara-elbrus/reviews/" target="_blank" rel="noopener">travel.yandex.ru</a>
+        <p>Шале в&nbsp;шаговой доступности от&nbsp;канатной дороги. Завтрак по&nbsp;меню, выезд до&nbsp;12:00, без животных. 4,6 по&nbsp;12&nbsp;отзывам на&nbsp;Яндекс Путешествиях, гости отмечают стильный интерьер.</p>
+        <div class="tags"><span>Рядом с&nbsp;канаткой</span><span>Завтрак</span><span>Отзывы на&nbsp;Яндексе</span></div>
+      </div>
+      <div class="cc">
+        <span class="where">Поляна Азау</span>
+        <h3>Kogutai Wood Cabin</h3>
+        <a href="https://travel.yandex.ru/hotels/the-kabardino-balkar-republic/kogutai-wood-cabin/" target="_blank" rel="noopener">travel.yandex.ru</a>
+        <p>Деревянный дом на&nbsp;60&nbsp;м². Терраса с&nbsp;беседками, мангальная зона и&nbsp;отдельная комната для снаряжения. Оценка 5,0 на&nbsp;Яндекс Путешествиях.</p>
+        <div class="tags"><span>Комната для лыж</span><span>Мангал</span><span>5,0</span></div>
+      </div>
+      <div class="cc">
+        <span class="where">Поляна Азау · у&nbsp;гондолы Рома-1</span>
+        <h3>Ozon Azau Shales Chalet</h3>
+        <a href="https://ostrovok.ru/hotel/russia/polyana_azau/mid10440705/ozon_azau_shales_chalet/" target="_blank" rel="noopener">ostrovok.ru</a>
+        <p>Шале в&nbsp;центре курорта, по&nbsp;данным Островка около 74&nbsp;м до&nbsp;гондолы. Цена от&nbsp;15&nbsp;851&nbsp;₽ за&nbsp;ночь, точная после выбора дат. 10 из&nbsp;10 по&nbsp;двум отзывам.</p>
+        <div class="tags"><span>Метры до&nbsp;канатки</span><span>Цена «от»</span><span>Календарь площадки</span></div>
+      </div>
+      <div class="cc">
+        <span class="where">Терскол · ул. Эльбрусская, 77</span>
+        <h3>Malkar house</h3>
+        <a href="https://101hotels.com/main/cities/terskol/kottedzh_malkar_house.html" target="_blank" rel="noopener">101hotels.com</a>
+        <p>Коттеджи и&nbsp;A-frame на&nbsp;56&nbsp;м² с&nbsp;видом на&nbsp;Чегет, около 1,2&nbsp;км до&nbsp;канатной дороги. От&nbsp;7&nbsp;020&nbsp;₽ за&nbsp;ночь, залог 5&nbsp;000&nbsp;₽, оплата на&nbsp;месте. Рядом баня и&nbsp;парк альпак. 9,8 по&nbsp;трём отзывам.</p>
+        <div class="tags"><span>Вид на&nbsp;Чегет</span><span>Цена и&nbsp;залог</span><span>Баня</span></div>
+      </div>
+      <div class="cc">
+        <span class="where">Терскол</span>
+        <h3>Freeride A-Frame</h3>
+        <a href="https://otello.ru/hotel/70000001112869207" target="_blank" rel="noopener">otello.ru</a>
+        <p>Частный A-frame на&nbsp;6&nbsp;гостей, около 700&nbsp;м от&nbsp;центра посёлка. Без завтрака, без животных. Цену показывают только после выбора дат.</p>
+        <div class="tags"><span>A-frame на&nbsp;6</span><span>Цена по&nbsp;датам</span></div>
+      </div>
+    </div>
+    <p class="small">Описания собраны по&nbsp;открытым карточкам и&nbsp;поисковой выдаче на&nbsp;20&nbsp;ноября 2026. Цены и&nbsp;условия у&nbsp;домов могли измениться.</p>
+    <div class="two">
+      <div class="box norm"><h3>Что стало нормой</h3><ul><li>Метры или минуты до&nbsp;канатной дороги в&nbsp;первой строке</li><li>Площадь, число мест и&nbsp;что есть в&nbsp;доме</li><li>Календарь и&nbsp;цена после выбора дат</li><li>Рейтинг и&nbsp;отзывы рядом с&nbsp;ценой</li><li>Условия сразу: залог, животные, выезд</li></ul></div>
+      <div class="box gap"><h3>Чего я у&nbsp;них не&nbsp;встретила</h3><ul><li>Своего сайта: в&nbsp;выдаче только карточки на&nbsp;площадках</li><li>Несколько домов одного хозяина в&nbsp;одном календаре</li><li>Трансфер, который добавляется к&nbsp;брони одной галочкой</li><li>Интерьер, который узнают по&nbsp;одному кадру</li></ul></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Задачи</div>
+    <h2>Что должен делать ваш сайт</h2>
+    <div class="tasks">
+      <div><h3>Показывать три дома рядом</h3><p>Фото, сколько гостей, спальни, сколько идти до&nbsp;канатки. Гость сравнивает за&nbsp;минуту, а&nbsp;не&nbsp;листает три профиля.</p></div>
+      <div><h3>Открывать свободные даты</h3><p>Календарь по&nbsp;каждому дому. Занято на&nbsp;Азау, значит рядом видно, что свободно на&nbsp;Чегете.</p></div>
+      <div><h3>Называть цену по&nbsp;сезону</h3><p>Праздники, высокий сезон, будни. Сумма за&nbsp;выбранные ночи считается сама.</p></div>
+      <div><h3>Добавлять трансфер</h3><p>Откуда, на&nbsp;сколько человек и&nbsp;сколько стоит, одной галочкой при брони.</p></div>
+      <div><h3>Брать предоплату</h3><p>Онлайн, с&nbsp;понятными условиями: заезд, выезд, залог, отмена. Без «скиньте на&nbsp;карту».</p></div>
+      <div><h3>Собирать загрузку для вас</h3><p>Все три дома в&nbsp;одном календаре, каждая бронь приходит в&nbsp;WhatsApp готовым сообщением.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Пример</div>
+    <h2>Было и&nbsp;стало</h2>
+    <p class="lead">Так обычно выглядит путь от&nbsp;первого вопроса до&nbsp;брони, и&nbsp;так он выглядит с&nbsp;сайтом. Имена и&nbsp;даты условные.</p>
+    <div class="ba">
+      <div class="chat">
+        <span class="lbl">Сейчас</span>
+        <span class="acc">@unity_aframeazau</span>
+        <div class="b in">Здравствуйте! Свободно на&nbsp;14–17 февраля? Нас шестеро</div>
+        <div class="b out">Здравствуйте! A-frame занят, но&nbsp;посмотрите barn house, напишите в&nbsp;@unity_azau</div>
+        <span class="acc">@unity_azau</span>
+        <div class="b in">Добрый день, на&nbsp;14–17 февраля свободно? Сколько стоит и&nbsp;есть&nbsp;ли трансфер из&nbsp;Минвод?</div>
+        <p class="foot">Два аккаунта, четыре сообщения, а&nbsp;до&nbsp;цены ещё не&nbsp;дошли. Тем временем гость открыл Островок.</p>
+      </div>
+      <div class="chat">
+        <span class="lbl">С&nbsp;сайтом</span>
+        <div class="b wa"><b>Бронь с&nbsp;сайта UNiTy</b>• Barn house, Поляна Азау
+• 14–17 февраля, 3&nbsp;ночи
+• 6&nbsp;гостей
+• Трансфер: из&nbsp;Минвод, туда и&nbsp;обратно
+• Предоплата внесена
+• Ирина, +7&nbsp;9…</div>
+        <p class="foot">Одно сообщение в&nbsp;WhatsApp. Вам остаётся подтвердить и&nbsp;отметить даты.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Идеи</div>
+    <h2>Что можно предложить вашим гостям</h2>
+    <p class="lead">Это варианты на&nbsp;обсуждение, берите то, что подходит.</p>
+    <div class="ideas">
+      <div><h3>Сертификат к&nbsp;Новому году</h3><p>Ночь или выходные в&nbsp;UNiTy в&nbsp;подарок паре или другу-лыжнику. Покупают и&nbsp;оплачивают прямо на&nbsp;сайте.</p></div>
+      <div><h3>Дом и&nbsp;трансфер одним пакетом</h3><p>Из&nbsp;аэропорта и&nbsp;обратно, цена видна сразу в&nbsp;брони. Гостю не&nbsp;нужно искать водителя отдельно.</p></div>
+      <div><h3>Ранняя бронь на&nbsp;март и&nbsp;май</h3><p>Небольшая скидка тем, кто бронирует за&nbsp;месяц. Праздники заполняются заранее, а&nbsp;вы раньше видите загрузку.</p></div>
+      <div><h3>BBQ-вечер под&nbsp;сосной</h3><p>Мангал и&nbsp;набор к&nbsp;приезду как опция при брони. У&nbsp;вас BBQ уже в&nbsp;шапке, осталось сделать его кнопкой.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Вопросы</div>
+    <h2>Что нужно уточнить</h2>
+    <ol class="qlist">
+      <li>Сколько у&nbsp;вас домов и&nbsp;где каждый: barn house и&nbsp;A-frame на&nbsp;Поляне Азау, дом на&nbsp;Чегете? «Студия» из&nbsp;поста это отдельный вариант?</li>
+      <li>Сколько гостей и&nbsp;спален в&nbsp;каждом доме? Сколько минут пешком до&nbsp;канатной дороги?</li>
+      <li>Цены за&nbsp;ночь: праздники, высокий сезон, будни и&nbsp;лето. Есть&nbsp;ли минимальный срок?</li>
+      <li>Трансфер: откуда (Минеральные Воды, Нальчик), на&nbsp;сколько человек и&nbsp;сколько стоит?</li>
+      <li>Какая предоплата и&nbsp;условия отмены? Что из&nbsp;хайлайтс «ВАЖНО!» вынести на&nbsp;сайт: заезд, выезд, залог, животные?</li>
+      <li>Где сейчас ведёте брони: в&nbsp;блокноте, в&nbsp;таблице, в&nbsp;сервисе? Есть&nbsp;ли карточки на&nbsp;Островке, Авито или Суточно?</li>
+      <li>На&nbsp;какой номер принимать брони с&nbsp;сайта? На&nbsp;вывеске у&nbsp;дома виден другой номер, он тоже ваш?</li>
+      <li>Название ИП для&nbsp;политики конфиденциальности и&nbsp;договора брони.</li>
+    </ol>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Подготовила Анастасия Абдуллаева</span>
+    <span class="sign"><span><b>FOR.MI</b> designed &amp; developed by ABN</span><a class="rnd" href="https://t.me/abanev_dev" target="_blank" rel="noopener" aria-label="Telegram" title="Telegram"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.4 4.3 2.9 11.5c-1.3.5-1.2 1.2-.2 1.5l4.7 1.5 1.8 5.5c.2.6.4.8.9.8s.6-.2.9-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8L22.8 5.8c.3-1.3-.4-1.9-1.4-1.5zM8.6 14.1l9.6-6c.5-.3.9-.1.5.2l-7.8 7.1-.3 3.3-2-4.6z"/></svg></a></span>
+  </div>
+</footer>
+
+</body>
+</html>
